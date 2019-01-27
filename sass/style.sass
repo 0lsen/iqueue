@@ -1,0 +1,157 @@
+$bodyPadding: 25px
+
+$textColor: darkblue
+$bgColor: white
+
+$queueInColor: green
+$queueOutColor: red
+$queueColor: black
+
+$type0Color: red
+$type1Color: yellow
+$type2Color: green
+
+$spoiledColor: black
+
+$transitionDelay: 0.5s
+
+$tileWidth: 50px
+$tilePadding: 15px
+
+$tooltipWidth: 200px
+$tooltipBorder: 5px
+
+body
+  background: $bgColor
+  color: $textColor
+  padding: $bodyPadding
+  margin: 0
+  position: relative
+
+header
+  text-align: center
+  margin-bottom: 30px
+
+hr
+  background: radial-gradient(circle, $textColor 50%, $bgColor 100%)
+  border: none
+  height: 1px
+  margin: 40px 0
+
+#status button
+  font-size: 18px
+  margin-right: 15px
+
+#info
+  display: flex
+  justify-content: center
+
+  div
+    opacity: 0
+    border: 1px solid $textColor
+    padding: 10px
+    margin: 0 15px
+    transition: opacity $transitionDelay ease-in
+
+    &:first-child
+      color: $queueInColor
+      border-color: $queueInColor
+
+    &:nth-child(2)
+      color: $queueOutColor
+      border-color: $queueOutColor
+
+    &:nth-child(3)
+      color: $queueColor
+      border-color: $queueColor
+
+    span
+      font-weight: bold
+      font-size: 1.2em
+
+#queue
+  display: flex
+  flex-wrap: wrap
+
+  > div
+    width: 50%
+
+  > div:not(.queue) > div, .queue
+    display: flex
+    flex-wrap: wrap
+    align-content: flex-start
+    margin-bottom: 30px
+
+    h2
+      width: 100%
+      text-align: left
+
+    div
+      height: $tileWidth
+      width: $tileWidth
+      background: $textColor
+      color: $bgColor
+      margin: 10px
+      opacity: 0
+      transition: opacity $transitionDelay ease-in
+      position: relative
+      text-align: center
+      padding: $tilePadding
+
+      span
+        display: none
+      &:hover span
+        display: inline
+
+      &:after
+        content: ""
+        position: absolute
+        right: 5px
+        bottom: 5px
+        width: 12px
+        height: 12px
+        display: block
+        border: 1px solid $bgColor
+
+      &.type0:after
+        background: $type0Color
+
+      &.type1:after
+        background: $type1Color
+
+      &.type2:after
+        background: $type2Color
+
+      &.spoiled
+        background: $spoiledColor
+
+#settings
+  display: flex
+  flex-wrap: wrap
+
+  div
+    margin: 0 15px
+
+    input
+      width: 50px
+
+    label
+      display: inline-block
+      width: 90px
+
+    sup
+      position: absolute
+      font-size: 0.7em
+
+h2.trigger
+  cursor: pointer
+
+#tooltip
+  display: none
+  position: absolute
+  top: 0
+  left: 0
+  width: $tooltipWidth
+  padding: 15px
+  border: $tooltipBorder solid $bgColor
+  color: $bgColor

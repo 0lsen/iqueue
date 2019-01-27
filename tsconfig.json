@@ -1,0 +1,10 @@
+{
+  "files": [
+    "app/ts/IQueue.ts"
+  ],
+  "compilerOptions": {
+    "module": "amd",
+    "outFile": "public/assets/iQueue.js",
+    "target": "es6"
+  }
+}

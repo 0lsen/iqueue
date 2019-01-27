@@ -1,0 +1,115 @@
+body {
+  background: white;
+  color: darkblue;
+  padding: 25px;
+  margin: 0;
+  position: relative; }
+
+header {
+  text-align: center;
+  margin-bottom: 30px; }
+
+hr {
+  background: radial-gradient(circle, darkblue 50%, white 100%);
+  border: none;
+  height: 1px;
+  margin: 40px 0; }
+
+#status button {
+  font-size: 18px;
+  margin-right: 15px; }
+
+#info {
+  display: flex;
+  justify-content: center; }
+  #info div {
+    opacity: 0;
+    border: 1px solid darkblue;
+    padding: 10px;
+    margin: 0 15px;
+    transition: opacity 0.5s ease-in; }
+    #info div:first-child {
+      color: green;
+      border-color: green; }
+    #info div:nth-child(2) {
+      color: red;
+      border-color: red; }
+    #info div:nth-child(3) {
+      color: black;
+      border-color: black; }
+    #info div span {
+      font-weight: bold;
+      font-size: 1.2em; }
+
+#queue {
+  display: flex;
+  flex-wrap: wrap; }
+  #queue > div {
+    width: 50%; }
+  #queue > div:not(.queue) > div, #queue .queue {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-bottom: 30px; }
+    #queue > div:not(.queue) > div h2, #queue .queue h2 {
+      width: 100%;
+      text-align: left; }
+    #queue > div:not(.queue) > div div, #queue .queue div {
+      height: 50px;
+      width: 50px;
+      background: darkblue;
+      color: white;
+      margin: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+      position: relative;
+      text-align: center;
+      padding: 15px; }
+      #queue > div:not(.queue) > div div span, #queue .queue div span {
+        display: none; }
+      #queue > div:not(.queue) > div div:hover span, #queue .queue div:hover span {
+        display: inline; }
+      #queue > div:not(.queue) > div div:after, #queue .queue div:after {
+        content: "";
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        width: 12px;
+        height: 12px;
+        display: block;
+        border: 1px solid white; }
+      #queue > div:not(.queue) > div div.type0:after, #queue .queue div.type0:after {
+        background: red; }
+      #queue > div:not(.queue) > div div.type1:after, #queue .queue div.type1:after {
+        background: yellow; }
+      #queue > div:not(.queue) > div div.type2:after, #queue .queue div.type2:after {
+        background: green; }
+      #queue > div:not(.queue) > div div.spoiled, #queue .queue div.spoiled {
+        background: black; }
+
+#settings {
+  display: flex;
+  flex-wrap: wrap; }
+  #settings div {
+    margin: 0 15px; }
+    #settings div input {
+      width: 50px; }
+    #settings div label {
+      display: inline-block;
+      width: 90px; }
+    #settings div sup {
+      position: absolute;
+      font-size: 0.7em; }
+
+h2.trigger {
+  cursor: pointer; }
+
+#tooltip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  padding: 15px;
+  border: 5px solid white;
+  color: white; }

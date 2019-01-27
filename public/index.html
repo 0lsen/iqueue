@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>iQueue</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>    <script src="assets/iQueue.js"></script>
+    <script>
+        $(function () {
+            new Controller();
+        });
+    </script>
+</head>
+<body>
+<header>
+    <h1>iQueue</h1>
+</header>
+<div>
+    <div id="status"></div>
+    <h2 class="trigger" onclick="$('#settings').slideToggle();">Settings</h2>
+    <div id="settings" style="display: none"></div>
+    <hr/>
+    <div id="info"></div>
+    <div id="queue"></div>
+    <hr>
+    <h2 class="trigger" onclick="$('#about').slideToggle();">About</h2>
+    <div id="about" style="display: none">
+        This is a simple (read: fugly) simulation of a Queueing System:
+        <ul>
+            <li>There is one queue, comprised of food items, that are to be eaten by a couple of consumers.</li>
+            <li>At each step a random amount of food items falls into the queue and each consumer (in random order) will attempt to eat a random number of items.</li>
+            <li>
+                Consumers and food are split into three categories: vegan (green), vegetarian (yellow) and omnivorous (red) - indicating what kinds of food they are able to eat.<br/>
+                E.g. omnivorous consumers are able to eat all kinds of food, vegetarians cannot consume "red" food and vegans are limited to "green" food.
+            </li>
+            <li>
+                each food item comes with a couple of properties:
+                <ul>
+                    <li>a step at which it will spoil</li>
+                    <li>a number of calories it provides</li>
+                    <li>a category denoting who can consume it</li>
+                </ul>
+            </li>
+            <li>
+                The challenge is to create an algorithm (in <code>Food.ts:score()</code>) that will sort the queue in a manner that will satify your personal needs.<br/>
+                You will most likely want to avoid spoilage and adhere to some order of hard and soft constraints.<br/>
+                For example:
+                <ul>
+                    <li>
+                        hard constraint: avoid spoilage and adhere to some scheduling policy
+                        (like <a href="https://en.wikipedia.org/wiki/Shortest_job_next" target="_blank">SJN</a>
+                        or <a href="https://en.wikipedia.org/wiki/Highest_response_ratio_next" target="_blank">HRRN</a>)
+                    </li>
+                    <li>soft constraint: prefer food with more calories</li>
+                    <li>other useful stuff, like assigning higher priority to meat as it can be eaten by fewer consumers</li>
+                </ul>
+            </li>
+            <li>Default: sort by HRRN, that's it.</li>
+        </ul>
+        Notes:
+        <ul>
+            <li><sup>1</sup> <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Normal Distribution</a> assumed</li>
+            <li><sup>2</sup> <a href="https://en.wikipedia.org/wiki/Poisson_point_process" target="_blank">Poisson Distribution</a> assumed</li>
+        </ul>
+    </div>
+</div>
+<div id="tooltip">hai</div>
+</body>
+</html>
